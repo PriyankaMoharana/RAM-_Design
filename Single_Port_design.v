@@ -9,16 +9,12 @@ module single_port_ram(
 );
   
   reg [7:0] ram [63:0]; 
-  reg [5:0] addr_reg; 
  
   always @ (posedge clk)
     begin
       if(we)
         ram[addr] <= data;
       else
-        addr_reg <= addr; 
+       q <= ram[addr]; 
     end
- 
-  assign q = ram[addr_reg];
-  
 endmodule
